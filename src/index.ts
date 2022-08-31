@@ -1,5 +1,5 @@
 export class NXApi {
-    public static url = new URL('https://api.flybywiresim.com');
+    public static url = new URL('http://localhost:3000');
 }
 
 export * from './apis';

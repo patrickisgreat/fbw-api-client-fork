@@ -5,9 +5,9 @@ export function get<T>(url: URL, headers?: any): Promise<T> {
         .then((res) => res.data);
 }
 
-export function del(url: URL, headers?: any): Promise<void> {
+export function del(url: URL, headers?: any) {
     return axios.delete(url.href, { headers })
-        .then((res) => res.data);
+        .then((res) => res);
 }
 
 export function post<T>(url: URL, body: any, headers?: any): Promise<T> {
