@@ -8,3 +8,4 @@ export * from './metar';
 export * from './taf';
 export * from './telex';
 export * from './Hoppie';
+export * from './acms';
