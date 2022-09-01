@@ -59,7 +59,7 @@ export declare class FaultMessage {
 
     lVarName: string;
 
-    lVarValue: string;
+    lVarValue: boolean;
 
     type: string;
 
