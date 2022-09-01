@@ -1,6 +1,6 @@
 {
   "name": "@patrickisgreat/fbw-api-client-fork",
-  "version": "0.16.1",
+  "version": "0.16.2",
   "description": "Client library for the BeefSupreme Simulations API",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
