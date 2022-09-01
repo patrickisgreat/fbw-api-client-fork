@@ -53,6 +53,14 @@ export declare class FaultMessage {
 
     tailNumber: string;
 
+    ComStatus: string;
+
+    Direction: string;
+
+    lVarName: string;
+
+    lVarValue: string;
+
     type: string;
 
     c2Afect?: boolean;
