@@ -62,6 +62,7 @@ export declare class FaultMessage {
 
 export class Acms {
     // ACMS // test with PostMan or equivalent
+    // here we can create a message with a status of queued
     public static async createAcmsMessage(message: AcmsMessage): Promise<AcmsMessage> {
         return post<AcmsMessage>(new URL('/acms-message', NXApi.url), message)
             .then((res: AcmsMessage) => res);
@@ -72,8 +73,14 @@ export class Acms {
             .then((res: AcmsMessage[]) => res);
     }
 
-    public static async getOneAcmsMessage(flightNumber: string, tailNumber: string): Promise<AcmsMessage> {
-        return get<AcmsMessage>(new URL(`/acms-message/${flightNumber}/${tailNumber}`, NXApi.url))
+    // create statuses enum (or relation maybe)
+    // statuses:
+    public static async getOneAcmsMessage(
+        flightNumber: string,
+        tailNumber: string,
+        status: string = 'New',
+        direction: 'Uplink'): Promise<AcmsMessage> {
+        return get<AcmsMessage>(new URL(`/acms-message/${flightNumber}/${tailNumber}/${status}/${direction}`, NXApi.url))
             .then((res: AcmsMessage) => res);
     }
 

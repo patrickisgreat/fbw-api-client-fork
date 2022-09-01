@@ -1,7 +1,7 @@
 {
-  "name": "@flybywiresim/api-client",
+  "name": "@patrickisgreat/fbw-api-client-fork",
   "version": "0.16.2",
-  "description": "Client library for the FlyByWire Simulations API",
+  "description": "Client library for the BeefSupreme Simulations API",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
   "types": "dist/index.d.ts",
@@ -11,9 +11,9 @@
     "lint": "eslint src/**/*.ts",
     "lint:fix": "eslint src/**/*.ts --fix"
   },
-  "repository": {
+  "reclository": {
     "type": "git",
-    "url": "git+https://github.com/flybywiresim/api-client.git"
+    "url": "git+https://github.com/patrickisgreat/fbw-api-client-fork.git"
   },
   "bugs": {
     "url": "https://github.com/flybywiresim/api-client/issues"
@@ -21,12 +21,13 @@
   "homepage": "https://github.com/flybywiresim/api-client#readme",
   "keywords": [
     "fs2020",
-    "fbw"
+    "fbw",
+    "beefsupreme"
   ],
   "files": [
     "dist"
   ],
-  "author": "FlyByWire Simulations",
+  "author": "FlyByWire Simulations & BeefSupreme Ltd.",
   "license": "MIT",
   "dependencies": {
     "axios": "^0.21.4"
