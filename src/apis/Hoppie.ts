@@ -7,6 +7,6 @@ export declare class HoppieResponse {
 
 export class Hoppie {
     public static sendRequest(body: any): Promise<HoppieResponse> {
-        return post<HoppieResponse>(new URL('/api/v1/hoppie', NXApi.url), body);
+        return post<HoppieResponse>(new URL('dev/api/v1/hoppie', NXApi.url), body);
     }
 }

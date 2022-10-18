@@ -37,6 +37,6 @@ export class Airport {
             throw new Error('No ICAOs provided');
         }
 
-        return post<AirportResponse[]>(new URL('/api/v1/airport/_batch', NXApi.url), { icaos });
+        return post<AirportResponse[]>(new URL('dev/api/v1/airport/_batch', NXApi.url), { icaos });
     }
 }

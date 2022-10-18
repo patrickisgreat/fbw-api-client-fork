@@ -40,6 +40,8 @@ export declare class AcmsDelResponse {
     affected: number
 }
 
+/* prettier-ignore */
+/* eslint-disable no-return-assign */
 export declare class FaultMessage {
     eventDate: Date;
 
@@ -72,12 +74,12 @@ export class Acms {
     // ACMS // test with PostMan or equivalent
     // here we can create a message with a status of queued
     public static async createAcmsMessage(message: AcmsMessage): Promise<AcmsMessage> {
-        return post<AcmsMessage>(new URL('/acms-message', NXApi.url), message)
+        return post<AcmsMessage>(new URL('dev/acms-message', NXApi.url), message)
             .then((res: AcmsMessage) => res);
     }
 
     public static async getAllAcmsMessages(): Promise<AcmsMessage[]> {
-        return get<AcmsMessage[]>(new URL('/acms-message', NXApi.url))
+        return get<AcmsMessage[]>(new URL('dev/acms-message', NXApi.url))
             .then((res: AcmsMessage[]) => res);
     }
 
@@ -87,18 +89,19 @@ export class Acms {
         flightNumber: string,
         tailNumber: string,
         status: string = 'New',
-        direction: 'Uplink'): Promise<AcmsMessage> {
-        return get<AcmsMessage>(new URL(`/acms-message/${flightNumber}/${tailNumber}/${status}/${direction}`, NXApi.url))
+        direction: 'Uplink',
+    ): Promise<AcmsMessage> {
+        return get<AcmsMessage>(new URL(`dev/acms-message/${flightNumber}/${tailNumber}/${status}/${direction}`, NXApi.url))
             .then((res: AcmsMessage) => res);
     }
 
     public static async updateAcmsMessage(flightNumber: string, updatedMessage: AcmsMessage): Promise<AcmsMessage> {
-        return put<AcmsMessage>(new URL(`/acms-message/${flightNumber}`, NXApi.url), updatedMessage)
+        return put<AcmsMessage>(new URL(`dev/acms-message/${flightNumber}`, NXApi.url), updatedMessage)
             .then((res: AcmsMessage) => res);
     }
 
     public static async removeAcmsMessage(id: string) {
-        return del(new URL(`/acms-message/${id}`, NXApi.url), {})
+        return del(new URL(`dev/acms-message/${id}`, NXApi.url), {})
             .then((res) => res);
     }
 
