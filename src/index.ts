@@ -1,5 +1,5 @@
 export class NXApi {
-    public static url = new URL('https://5ko3t11wtl.execute-api.us-east-1.amazonaws.com');
+    public static url = new URL('http://192.168.1.186:3000');
 }
 
 export * from './apis';
