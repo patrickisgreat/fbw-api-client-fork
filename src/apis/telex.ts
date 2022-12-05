@@ -111,7 +111,7 @@ export class Telex {
     private static accessToken: string;
 
     public static connect(status: AircraftStatus): Promise<Token> {
-        return post<Token>(new URL('dev/txcxn', NXApi.url), Telex.buildBody(status))
+        return post<Token>(new URL('/txcxn', NXApi.url), Telex.buildBody(status))
             .then((res) => {
                 Telex.accessToken = res.accessToken;
                 return res;
@@ -121,14 +121,14 @@ export class Telex {
     public static async update(status: AircraftStatus): Promise<TelexConnection> {
         Telex.connectionOrThrow();
 
-        return put<TelexConnection>(new URL('dev/txcxn', NXApi.url), Telex.buildBody(status), { Authorization: Telex.buildToken() })
+        return put<TelexConnection>(new URL('/txcxn', NXApi.url), Telex.buildBody(status), { Authorization: Telex.buildToken() })
             .then(Telex.mapConnection);
     }
 
     public static async disconnect(): Promise<void> {
         Telex.connectionOrThrow();
 
-        return del(new URL('dev/txcxn', NXApi.url), { Authorization: Telex.buildToken() })
+        return del(new URL('/txcxn', NXApi.url), { Authorization: Telex.buildToken() })
             .then(() => {
                 Telex.accessToken = '';
             });
@@ -137,7 +137,7 @@ export class Telex {
     public static async sendMessage(recipientFlight: string, message: string): Promise<TelexMessage> {
         Telex.connectionOrThrow();
 
-        return post<TelexMessage>(new URL('dev/txmsg', NXApi.url), {
+        return post<TelexMessage>(new URL('/txmsg', NXApi.url), {
             to: recipientFlight,
             message,
         }, { Authorization: Telex.buildToken() })
@@ -147,12 +147,12 @@ export class Telex {
     public static async fetchMessages(): Promise<TelexMessage[]> {
         Telex.connectionOrThrow();
 
-        return get<TelexMessage[]>(new URL('dev/txmsg', NXApi.url), { Authorization: Telex.buildToken() })
+        return get<TelexMessage[]>(new URL('/txmsg', NXApi.url), { Authorization: Telex.buildToken() })
             .then((res) => res.map(Telex.mapMessage));
     }
 
     public static fetchConnections(skip?: number, take?: number, bounds?: Bounds): Promise<Paginated<TelexConnection>> {
-        const url = new URL('dev/txcxn', NXApi.url);
+        const url = new URL('/txcxn', NXApi.url);
         if (skip) {
             url.searchParams.set('skip', skip.toString());
         }
@@ -200,7 +200,7 @@ export class Telex {
     }
 
     public static findConnections(flightNumber: string): Promise<SearchResult<TelexConnection>> {
-        const url = new URL('dev/txcxn/_find', NXApi.url);
+        const url = new URL('/txcxn/_find', NXApi.url);
         url.searchParams.set('flight', flightNumber);
 
         return get<SearchResult<TelexConnection>>(url)
@@ -211,7 +211,7 @@ export class Telex {
     }
 
     public static countConnections(): Promise<number> {
-        return get<number>(new URL('dev/txcxn/_count', NXApi.url));
+        return get<number>(new URL('/txcxn/_count', NXApi.url));
     }
 
     private static buildBody(status: AircraftStatus) {
