@@ -14,6 +14,8 @@ export declare class AcmsMessage {
 
     receptionDate: Date;
 
+    ComStatus: string;
+
     rawData?: string;
 
     tailNumber: string;
